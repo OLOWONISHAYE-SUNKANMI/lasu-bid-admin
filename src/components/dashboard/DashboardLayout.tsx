@@ -19,14 +19,14 @@ interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
-const adminNavItems = [
+const navItems = [
   {
     title: "Overview",
     href: "/admin",
     icon: LayoutDashboard,
   },
   {
-    title: "Items Management",
+    title: "Item Management",
     href: "/admin/items",
     icon: Package,
   },
@@ -47,29 +47,8 @@ const adminNavItems = [
   },
 ];
 
-const userNavItems = [
-  {
-    title: "Browse Auctions",
-    href: "/",
-    icon: Eye,
-  },
-  {
-    title: "My Bids",
-    href: "/bids",
-    icon: History,
-  },
-  {
-    title: "Watchlist",
-    href: "/watchlist",
-    icon: Heart,
-  },
-];
-
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const location = useLocation();
-  const isAdmin = location.pathname.startsWith("/admin");
-  const navItems = isAdmin ? adminNavItems : userNavItems;
 
   return (
     <div className="min-h-screen bg-background">
@@ -92,26 +71,10 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
               <div>
                 <h1 className="text-lg font-bold text-foreground">LASU Auction Portal</h1>
                 <p className="text-xs text-muted-foreground">
-                  {isAdmin ? "Administrator Dashboard" : "User Dashboard"}
+                  Administrator Dashboard
                 </p>
               </div>
             </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <Button
-              variant={isAdmin ? "outline" : "default"}
-              size="sm"
-              asChild
-            >
-              <NavLink to="/">User View</NavLink>
-            </Button>
-            <Button
-              variant={isAdmin ? "default" : "outline"}
-              size="sm"
-              asChild
-            >
-              <NavLink to="/admin">Admin View</NavLink>
-            </Button>
           </div>
         </div>
       </header>
@@ -128,7 +91,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           <nav className="p-4 space-y-2">
             {navItems.map((item) => {
               const Icon = item.icon;
-              const isActive = location.pathname === item.href;
+              const isActive = window.location.pathname === item.href;
               return (
                 <NavLink
                   key={item.href}

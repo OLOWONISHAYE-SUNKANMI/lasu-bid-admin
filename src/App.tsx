@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import AdminDashboard from "./pages/AdminDashboard";
-import UserDashboard from "./pages/UserDashboard";
 
 const queryClient = new QueryClient();
 
@@ -16,9 +15,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<UserDashboard />} />
-          <Route path="/bids" element={<UserDashboard />} />
-          <Route path="/watchlist" element={<UserDashboard />} />
+          <Route path="/" element={<AdminDashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/items" element={<AdminDashboard />} />
           <Route path="/admin/auctions" element={<AdminDashboard />} />
