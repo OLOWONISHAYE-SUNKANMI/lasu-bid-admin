@@ -25,26 +25,7 @@ const navItems = [
     href: "/admin",
     icon: LayoutDashboard,
   },
-  {
-    title: "Item Management",
-    href: "/admin/items",
-    icon: Package,
-  },
-  {
-    title: "Auctions",
-    href: "/admin/auctions",
-    icon: Gavel,
-  },
-  {
-    title: "Users",
-    href: "/admin/users",
-    icon: Users,
-  },
-  {
-    title: "Analytics",
-    href: "/admin/analytics",
-    icon: TrendingUp,
-  },
+
 ];
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
